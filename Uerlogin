@@ -1,0 +1,97 @@
+def registration():
+   db = open("database.txt", "r")
+   Username = input("Enter Username: ")
+   Pass = input("Create Password /n(Please enter atleast 1uppercase, 1 lowecase and 1 special character and 1 number): ")
+   Password = input("Confirm Password: ")
+   d= []
+   f =[]
+   for i in db:
+    a,b= i.split(", ")
+    b = b.strip()
+    d.append(a)
+    f.append(b)
+    data = dict(zip(d,f))
+
+C,s,d,sp = 0,0,0,0
+
+capitalletters= "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+smallletters="abcdefghijklmnopqrstuvwxyz"
+splchar="!@#$%^&*"
+digits = "12334567890"
+
+if Pass != Password:
+     print("Passwords do not match, Please register again")
+     registration()
+elif: 
+     len(Password) >5 and <16:
+     for i in Password:
+       if (i in capitalletters):
+         C+=1
+        
+        if (i in smallletters):
+          s+=1
+
+        if (i in splchar):
+          sp+=1
+
+        if (i in digits):
+          d+=1
+if (C>=1 and s>=1 and d>=1 and sp>=1 and C+s+d+sp == len(Password):
+           db = open("database.txt","a")
+           db.write(Username+", "+Password+" \n")
+           print("Registration successful")
+
+        else:
+           print("Invalid, Passwordm must  be between contain atleast 1 spl char, number, Capital letter and small letter")
+  
+   elif :
+     Username in db
+     print("Username already exists, please login or register with new username ")  
+     registration()
+
+    
+  
+
+
+def access():
+  Username = input("Enter Username:")
+  Password = input("Enter password:")
+
+  if not len(Username or Password)<1:
+    d=[]
+    f=[]
+    for i in db:
+      a,b=i.split(", ")
+      b= b.strip()
+      d.append(a)
+      f.append(b)
+    data= dict(zip(d,f))
+
+    try:
+      if data[Username]:
+         try:
+           if Password == data[Username]:
+            print("Login successful")
+            print("Hi,", Username)
+
+           else:
+            print("PAssword or username inorrect")
+
+         except:
+          print("Incorrect password or username")
+
+      else:
+        print("Username doesnt exist")
+
+    except: 
+       print ("Login Error")
+
+def userpage(option = None):
+  option  = input("Login | Signup")
+  if option == "Login":
+     access()
+  else:
+    option == "Signup"
+    registration()
+ 
+userpage()
